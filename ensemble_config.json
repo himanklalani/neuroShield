@@ -1,0 +1,22 @@
+{
+  "model_type": "SegResNet",
+  "num_folds": 2,
+  "roi_size": [
+    128,
+    128,
+    128
+  ],
+  "num_classes": 4,
+  "label_map": {
+    "0": "background",
+    "1": "NCR",
+    "2": "ED",
+    "3": "ET"
+  },
+  "model_paths": [
+    "d:\\uwcp-system\\fold1_best.pth",
+    "d:\\uwcp-system\\fold2_best.pth"
+  ],
+  "fold1_dice": 0.798,
+  "fold2_dice": "unknown"
+}
