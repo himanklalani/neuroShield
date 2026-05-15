@@ -29,12 +29,18 @@ class EnsembleModel:
 
         print(f"[EnsembleModel] Loading {self.config['num_folds']} model(s)...")
         for path in self.config["model_paths"]:
+            if not os.path.exists(path):
+                print(f"  ERROR: Model file not found at {path}")
+                continue
             m = create_segresnet().to(self.device)
             sd = torch.load(path, map_location=self.device, weights_only=False)
             m.load_state_dict(sd)
             m.eval()
             self.models.append(m)
             print(f"  Loaded: {os.path.basename(path)}")
+        
+        if not self.models:
+            raise RuntimeError("No models could be loaded. Check your ensemble_config.json paths.")
         print(f"[EnsembleModel] Ready!")
 
     def predict(self, tensor):

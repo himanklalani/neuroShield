@@ -20,6 +20,9 @@ def load_individual_files(flair_path, t1_path, t1ce_path, t2_path):
     tc_vol, _,   _   = load_nifti(t1ce_path)
     t2_vol, _,   _   = load_nifti(t2_path)
 
+    if not (f_vol.shape == t1_vol.shape == tc_vol.shape == t2_vol.shape):
+        raise ValueError(f"Shape mismatch: FLAIR {f_vol.shape}, T1 {t1_vol.shape}, T1CE {tc_vol.shape}, T2 {t2_vol.shape}")
+
     f_vol  = zscore_normalize(f_vol)
     t1_vol = zscore_normalize(t1_vol)
     tc_vol = zscore_normalize(tc_vol)

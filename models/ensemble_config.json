@@ -13,5 +13,7 @@
     "d:\\uwcp-system\\fold1_best.pth",
     "d:\\uwcp-system\\fold2_best.pth"
   ],
-  "best_dice": 0.798
+  "training_data_path": "D:\\UWCP_Federated_BrainTumor\\preprocessed\\train",
+  "fold1_dice": 0.798,
+  "fold2_dice": 0.79
 }
