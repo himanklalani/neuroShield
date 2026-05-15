@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens (Medical Professional — Spruce & Cream Overhaul) ── */
+:root {
+  --bg-primary: #F7F6F2;       /* Creamy luxurious organic neutral base */
+  --bg-surface: #ffffff;       /* Pristine elevated pure white card surface */
+  --bg-surface-hover: #f0efe9; /* Subtle warm stone-cream hover */
+  --bg-elevated: #ffffff;
+  --border-color: #CFCECA;     /* Elegant muted stone grey border */
+  --border-hover: #b0afab;
+  --accent: #193D35;           /* Deep Spruce Forest Green */
+  --accent-hover: #112a24;
+  --accent-muted: rgba(25, 61, 53, 0.06);
+  --text-primary: #193D35;     /* Deep Spruce text for absolute print-grade luxury */
+  --text-secondary: #5c6b65;   /* Muted stone-sage tone */
+  --text-tertiary: #8b9993;    /* Soft stone tint */
+  --success: #193D35;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), 'Consolas', monospace;
+
+  /* shadcn mappings */
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
+  --primary: var(--accent);
+  --primary-foreground: #F7F6F2;
+  --popover: var(--bg-elevated);
+  --popover-foreground: var(--text-primary);
+  --border: var(--border-color);
+  --input: var(--border-color);
+  --ring: var(--accent);
+}
+
+/* ─── Base Reset ────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  min-height: 100dvh;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ─── Typography ────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Surface Card ──────────────────────────────────────────── */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px -4px rgba(25, 61, 53, 0.08);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 24px -4px rgba(25, 61, 53, 0.12);
+}
+
+/* ─── Form Elements ─────────────────────────────────────────── */
+.input-field {
+  width: 100%;
+  background: rgba(25, 61, 53, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px 16px;
+  min-height: 44px;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.input-field::placeholder {
+  color: var(--text-tertiary);
+}
+
+.input-field:focus {
+  border-color: var(--accent);
+  background: rgba(25, 61, 53, 0.04);
+}
+
+/* ─── Buttons ───────────────────────────────────────────────── */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  color: var(--bg-primary);
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.98) translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: var(--text-tertiary);
+  color: var(--bg-surface);
+}
+
+.btn-primary:disabled:hover {
+  transform: none;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  background: rgba(25, 61, 53, 0.03);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:hover {
+  color: var(--text-primary);
+  background: rgba(25, 61, 53, 0.06);
+  border-color: var(--border-hover);
+}
+
+.btn-secondary:active {
+  transform: scale(0.98) translateY(-1px);
+}
+
+/* ─── Status Pill ───────────────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(25, 61, 53, 0.03);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+/* ─── Animations ────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fadeIn    { animation: fadeIn 0.35s ease-out; }
+.animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+.animate-spin      { animation: spin 0.8s linear infinite; }
+.animate-shimmer   {
+  background: linear-gradient(90deg, transparent 25%, rgba(25,61,53,0.04) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(25, 61, 53, 0.15);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(25, 61, 53, 0.3);
+}
+
+/* ─── Focus Ring ────────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+}
+
+/* ─── Range Slider ──────────────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+input[type="range"]::-webkit-slider-track {
+  height: 4px;
+  background: rgba(25, 61, 53, 0.08);
+  border-radius: 4px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: -8px;
+  border: 2px solid var(--bg-primary);
+  transition: transform 0.15s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* ─── Selection ─────────────────────────────────────────────── */
+::selection {
+  background: rgba(25, 61, 53, 0.12);
+  color: var(--text-primary);
+}
